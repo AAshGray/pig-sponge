@@ -26,7 +26,30 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        // a sentence to put our new sentence in
+        String newSentence = "";
+
+        // split the input into an array at the spaces
+        String[] array = sentence.split(" ");
+
+        // for each wrod in the array
+        for (String word : array) {
+            
+            // if it starts with a vowel
+            if (word.startsWith("a") || word.startsWith("e") || word.startsWith("i") || word.startsWith("o") || word.startsWith("u")) {
+                // just add it to the new sentence, with a " " at the end
+                newSentence += word + " ";
+            } else {
+                // if it doens't, take just the substring beginning at index 0, concatinate that to the first letter of hte string, and add "ay "
+                newSentence += word.substring(1, word.length()) + word.substring(0,1) + "ay ";
+            }
+        }
+
+        // after the loop is completed, take of the last letter of the new sentence if it is a " "
+        newSentence = newSentence.substring(0, newSentence.length() - 1);
+
+        // return the sentence
+        return newSentence;
     }
 
 
