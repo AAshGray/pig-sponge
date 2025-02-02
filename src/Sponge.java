@@ -1,3 +1,5 @@
+import java.nio.charset.CharacterCodingException;
+
 public class Sponge {
 
   /*
@@ -33,7 +35,23 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
+    char[] letters = sentence.toCharArray();
+    StringBuilder newSentence = new StringBuilder();
+    int counter = 1;
+
+    for (char c : letters) {
+      if (c == ' ') {
+        newSentence.append(c);
+        counter = 0; // reset counter on new word
+      } else if (counter % 2 == 0) {   //even letters are uppercase
+        newSentence.append(Character.toUpperCase(c));
+      } else {
+          newSentence.append(Character.toLowerCase(c));
+      }
+      counter++;
+    }
+    
+    return newSentence.toString();
   }
 
 
